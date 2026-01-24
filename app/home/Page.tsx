@@ -1,16 +1,21 @@
 import Footer from "../footer/Footer";
+import Contact from "./components/contacts/Contact";
+import Intro from "./components/intros/Intro";
+import Profile from "./components/profiles/Profile";
+import Projects from "./components/Projects";
 
 const Page = () => {
   return (
-    <div>
-      <section id="home" className="h-screen w-full">
-        home
+    <div className="bg-black">
+      <section id="home" className="w-full">
+        <Intro />
+        <Profile />
       </section>
       <section id="projects" className="h-screen w-full">
-        project
+        <Projects />
       </section>
-      <section id="contact" className="h-screen w-full">
-        contact
+      <section id="contact" className=" w-full">
+        <Contact />
       </section>
       <Footer />
     </div>
