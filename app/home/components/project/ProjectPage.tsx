@@ -8,12 +8,12 @@ const ProjectPage = () => {
   return (
     <div>
       {projects?.projects.map((project) => (
-        <div className="group relative overflow-hidden rounded-2xl bg-white  shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
+        <div
+          key={project.id}
+          className="group relative overflow-hidden rounded-2xl bg-white  shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
+        >
           {/* Image */}
-          <div
-            key={project.id}
-            className="relative h-52 w-full overflow-hidden"
-          >
+          <div className="relative h-52 w-full overflow-hidden">
             <img
               src={project.image}
               alt={project.name}
