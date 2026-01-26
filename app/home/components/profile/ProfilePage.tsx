@@ -1,8 +1,11 @@
+"use client";
 import React from "react";
-import { cn } from "../../../common/lib/utils";
+import { cn } from "../../../../common/lib/utils";
+import { FiDownload } from "react-icons/fi";
+import { motion } from "framer-motion";
 import TypeWriter from "./TypeWriter";
 
-const Profile = () => {
+const ProfilePage = () => {
   return (
     <div className="max-w-7xl mx-auto mt-1 mb-15 lg:mb-20  flex flex-col md:flex-row items-center md:items-center justify-center gap-6 px-4">
       <div className="w-full md:w-[45%] h-[320px] flex justify-center items-center">
@@ -41,18 +44,32 @@ const Profile = () => {
             Agricultural Engineering from the University of Jember, Indonesia.
             Although my career path slightly deviates from my academic
             background, I chose to focus on enhancing my programming skills,
-            particularly in web development. Check out
-            <a href="https://github.com/akbardermawan">
-              <span className="text-gray-600 underline decoration-gray-400 decoration-2">
-                My Github
-              </span>
-            </a>
-            .
+            particularly in web development.
           </p>
+          <div className="flex gap-4 ">
+            <div className="flex mt-3">
+              <a
+                href="/files/CV_Akbar.pdf"
+                download
+                aria-label="Download Resume"
+              >
+                <motion.button
+                  whileHover={{ backgroundColor: "#0ea5e9" }} // Tailwind sky-600
+                  transition={{ duration: 0.3 }}
+                  className="flex w-[160px] lg:w-[180px] h-[25px] lg:h-[30px] rounded-full pl-2 lg:pl-4 py-2 border-2 border-sky-500 justify-between items-center text-black hover:text-white"
+                >
+                  <span className="text-lg text-white">Download CV</span>
+                  <div className="w-[25px] lg:w-[30px] h-[25px] lg:h-[30px] rounded-full bg-sky-400 flex justify-center items-center">
+                    <FiDownload className="" />
+                  </div>
+                </motion.button>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   );
 };
 
-export default Profile;
+export default ProfilePage;

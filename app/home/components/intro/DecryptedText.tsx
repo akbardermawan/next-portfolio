@@ -22,8 +22,8 @@ interface DecryptedTextProps extends React.ComponentPropsWithoutRef<
 
 export default function DecryptedText({
   text,
-  speed = 100,
-  maxIterations = 9,
+  speed = 90,
+  maxIterations = 10,
   sequential = false,
   revealDirection = "start",
   useOriginalCharsOnly = false,

@@ -1,17 +1,12 @@
 "use client";
 import { useEffect, useRef } from "react";
-import Link from "next/link";
-import { FiDownload } from "react-icons/fi";
-import { FaTelegramPlane } from "react-icons/fa";
-import { IoPersonSharp } from "react-icons/io5";
-import { GoProjectRoadmap } from "react-icons/go";
+
 import DecryptedText from "./DecryptedText";
 import RotatingText from "./RotatingText";
 
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-import { motion } from "framer-motion";
 import BackgroundIntro from "./BackgroundIntro";
 
 // Daftarkan plugin ScrollTrigger
@@ -19,7 +14,7 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-const Intro = () => {
+const IntroPage = () => {
   const textRef = useRef(null);
 
   useEffect(() => {
@@ -82,26 +77,6 @@ const Intro = () => {
                   rotationInterval={2000}
                 />
               </h2>
-              <div className="flex gap-4 ">
-                <div className="flex mt-3">
-                  <a
-                    href="/files/CV_Akbar.pdf"
-                    download
-                    aria-label="Download Resume"
-                  >
-                    <motion.button
-                      whileHover={{ backgroundColor: "#0ea5e9" }} // Tailwind sky-600
-                      transition={{ duration: 0.3 }}
-                      className="flex w-[160px] lg:w-[180px] h-[25px] lg:h-[30px] rounded-full pl-2 lg:pl-4 py-2 border-2 border-sky-500 justify-between items-center text-black hover:text-white"
-                    >
-                      <span className="text-lg text-white">Download CV</span>
-                      <div className="w-[25px] lg:w-[30px] h-[25px] lg:h-[30px] rounded-full bg-sky-400 flex justify-center items-center">
-                        <FiDownload className="" />
-                      </div>
-                    </motion.button>
-                  </a>
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -110,4 +85,4 @@ const Intro = () => {
   );
 };
 
-export default Intro;
+export default IntroPage;

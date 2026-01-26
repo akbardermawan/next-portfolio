@@ -15,6 +15,6 @@ const baseQuery: BaseQueryFn<string | FetchArgs, unknown, FetchBaseQueryError> =
 export const indexApi = createApi({
   reducerPath: "indexApi", // Menetapkan nama yang lebih jelas untuk reducerPath
   baseQuery,
-  tagTypes: ["Product", "Order", "User", "Category"] as const, // Tag const untuk menjaga integritas tipe
+  tagTypes: ["Project", "Order", "User", "Category"] as const, // Tag const untuk menjaga integritas tipe
   endpoints: () => ({}), // Endpoint kosong, bisa ditambahkan sesuai kebutuhan
 });

@@ -1,8 +1,8 @@
 import Footer from "../footer/Footer";
-import Contact from "./components/contacts/Contact";
-import Intro from "./components/intros/Intro";
-import Profile from "./components/profiles/Profile";
-import Projects from "./components/Projects";
+import Contact from "./components/contact/ContactPage";
+import Intro from "./components/intro/IntroPage";
+import Profile from "./components/profile/ProfilePage";
+import Project from "./components/project/ProjectPage";
 
 const Page = () => {
   return (
@@ -12,7 +12,7 @@ const Page = () => {
         <Profile />
       </section>
       <section id="projects" className="h-screen w-full">
-        <Projects />
+        <Project />
       </section>
       <section id="contact" className=" w-full">
         <Contact />

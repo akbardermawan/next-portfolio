@@ -13,7 +13,7 @@ import ContactBackground from "./ContactBackground";
 
 // import ContactButton from "../components/ContactButton";
 
-const Contact = () => {
+const ContactPage = () => {
   const formRef = useRef<HTMLFormElement | null>(null);
   const [form, setForm] = useState({
     name: "",
@@ -229,4 +229,4 @@ const Contact = () => {
   );
 };
 
-export default Contact;
+export default ContactPage;

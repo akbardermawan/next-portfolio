@@ -8,7 +8,6 @@ import "./globals.css";
 import { Provider } from "react-redux";
 import store from "../common/store/store";
 
-import Navigation from "./nav/Navigation";
 import PillNav from "./nav/PillNav";
 
 const poppins = Poppins({
@@ -30,26 +29,26 @@ export default function RootLayout({
       </head>
       <body className={`${poppins.variable} font-sans antialiased`}>
         <Provider store={store}>
-          {/* <Navigation /> */}
-          <PillNav
-            logo={logo}
-            logoAlt="Company Logo"
-            items={[
-              { label: "Home", href: "/" },
-              { label: "About", href: "/about" },
-              { label: "Services", href: "/services" },
-              { label: "Contact", href: "/contact" },
-            ]}
-            activeHref="/"
-            className="custom-nav"
-            ease="power2.easeOut"
-            baseColor="#000000"
-            pillColor="#ffffff"
-            hoveredPillTextColor="#ffffff"
-            pillTextColor="#000000"
-            theme="light"
-            initialLoadAnimation={false}
-          />
+          <div className="w-full fixed top-0 left-0 z-50 ">
+            <PillNav
+              logo={logo}
+              logoAlt="Company Logo"
+              items={[
+                { label: "Home", href: "/" },
+                { label: "Project", href: "/project" },
+                { label: "Contact", href: "/contact" },
+              ]}
+              className="custom-nav"
+              ease="power2.easeOut"
+              baseColor="#000000"
+              pillColor="#ffffff"
+              hoveredPillTextColor="#ffffff"
+              pillTextColor="#000000"
+              theme="light"
+              initialLoadAnimation={false}
+            />
+          </div>
+
           {children}
         </Provider>
       </body>

@@ -2,6 +2,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { gsap } from "gsap";
+import { usePathname } from "next/navigation";
 
 export type PillNavItem = {
   label: string;
@@ -13,7 +14,6 @@ export interface PillNavProps {
   logo: string;
   logoAlt?: string;
   items: PillNavItem[];
-  activeHref?: string;
   className?: string;
   ease?: string;
   baseColor?: string;
@@ -29,7 +29,6 @@ const PillNav: React.FC<PillNavProps> = ({
   logo,
   logoAlt = "Logo",
   items,
-  activeHref,
   className = "",
   ease = "power3.easeOut",
   baseColor = "#fff",
@@ -51,6 +50,17 @@ const PillNav: React.FC<PillNavProps> = ({
   const mobileMenuRef = useRef<HTMLDivElement | null>(null);
   const navItemsRef = useRef<HTMLDivElement | null>(null);
   const logoRef = useRef<HTMLAnchorElement | HTMLElement | null>(null);
+
+  const pathname = usePathname();
+
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsDesktop(window.innerWidth >= 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
 
   useEffect(() => {
     const layout = () => {
@@ -256,10 +266,12 @@ const PillNav: React.FC<PillNavProps> = ({
     ["--pill-bg"]: pillColor,
     ["--hover-text"]: hoveredPillTextColor,
     ["--pill-text"]: resolvedPillTextColor,
-    ["--nav-h"]: "42px",
-    ["--logo"]: "36px",
-    ["--pill-pad-x"]: "18px",
-    ["--pill-gap"]: "3px",
+
+    // 🔥 ukuran navbar
+    ["--nav-h"]: isDesktop ? "60px" : "42px",
+    ["--logo"]: isDesktop ? "48px" : "36px",
+    ["--pill-pad-x"]: isDesktop ? "28px" : "18px",
+    ["--pill-gap"]: isDesktop ? "6px" : "3px",
   } as React.CSSProperties;
 
   return (
@@ -330,7 +342,7 @@ const PillNav: React.FC<PillNavProps> = ({
             style={{ gap: "var(--pill-gap)" }}
           >
             {items.map((item, i) => {
-              const isActive = activeHref === item.href;
+              const isActive = pathname === item.href;
 
               const pillStyle: React.CSSProperties = {
                 background: "var(--pill-bg, #fff)",
@@ -381,7 +393,7 @@ const PillNav: React.FC<PillNavProps> = ({
               );
 
               const basePillClasses =
-                "relative overflow-hidden inline-flex items-center justify-center h-full no-underline rounded-full box-border font-semibold text-[16px] leading-[0] uppercase tracking-[0.2px] whitespace-nowrap cursor-pointer px-0";
+                "relative overflow-hidden inline-flex items-center justify-center h-full no-underline rounded-full box-border font-semibold text-[16px] md:text-[18px] leading-[0] uppercase tracking-[0.2px] whitespace-nowrap cursor-pointer px-0";
 
               return (
                 <li key={item.href} role="none" className="flex h-full">
@@ -421,7 +433,7 @@ const PillNav: React.FC<PillNavProps> = ({
           onClick={toggleMobileMenu}
           aria-label="Toggle menu"
           aria-expanded={isMobileMenuOpen}
-          className="md:hidden rounded-full border-0 flex flex-col items-center justify-center gap-1 cursor-pointer p-0 relative"
+          className="mr-1 md:hidden rounded-full border-0 flex flex-col items-center justify-center gap-1 cursor-pointer p-0 relative"
           style={{
             width: "var(--nav-h)",
             height: "var(--nav-h)",
