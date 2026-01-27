@@ -26,6 +26,12 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <title>Akbar Profile</title>
+        {/* Cloudinary Upload Widget */}
+        <script
+          src="https://widget.cloudinary.com/v2.0/global/all.js"
+          type="text/javascript"
+          async
+        ></script>
       </head>
       <body className={`${poppins.variable} font-sans antialiased`}>
         <Provider store={store}>

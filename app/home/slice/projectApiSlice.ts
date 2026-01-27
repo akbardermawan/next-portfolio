@@ -6,7 +6,7 @@ export const projectApiSlice = indexApi.injectEndpoints({
   endpoints: (builder) => ({
     getAllProject: builder.query<ProjectResponse, void>({
       query: () => ({
-        url: `${PROJECT_URL}/api/allproject`,
+        url: `${PROJECT_URL}/allproject`,
       }),
       providesTags: ["Project"],
     }),

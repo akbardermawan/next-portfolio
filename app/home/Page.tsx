@@ -11,7 +11,7 @@ const Page = () => {
         <Intro />
         <Profile />
       </section>
-      <section id="projects" className="h-screen w-full">
+      <section id="projects" className=" w-full">
         <Project />
       </section>
       <section id="contact" className=" w-full">
