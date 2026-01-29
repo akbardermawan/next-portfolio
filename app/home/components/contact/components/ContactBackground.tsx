@@ -6,7 +6,7 @@ import { useEffect, useRef } from "react";
 import { Renderer, Camera, Geometry, Program, Mesh } from "ogl";
 
 import "./ContactBackground.css";
-import { ContactBackgroundProps } from "../../type/ContactBacgroundProps";
+import { ContactBackgroundProps } from "../../../type/ContactBacgroundProps";
 
 const defaultColors = ["#ffffff", "#ffffff", "#ffffff"];
 

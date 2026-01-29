@@ -30,7 +30,7 @@ const ProfilePage = () => {
           </div>
         </div>
       </div>
-      <div className="w-full md:w-[55%] text-center md:text-left xl:pt-8 md:pr-2 ">
+      <div className="w-full md:w-[55%] text-center md:text-left xl:pt-8 md:pr-2 mt-8 md:mt-1 ">
         <div>
           <TypeWriter text="Akbar Dermawan Mahbubillah" speed={80} pause={80} />
         </div>
@@ -58,7 +58,7 @@ const ProfilePage = () => {
                   transition={{ duration: 0.3 }}
                   className="flex w-[160px] lg:w-[180px] h-[25px] lg:h-[30px] rounded-full pl-2 lg:pl-4 py-2 border-2 border-sky-500 justify-between items-center text-black hover:text-white"
                 >
-                  <span className="text-lg text-white">Download CV</span>
+                  <span className="text-lg text-white ">Download CV</span>
                   <div className="w-[25px] lg:w-[30px] h-[25px] lg:h-[30px] rounded-full bg-sky-400 flex justify-center items-center">
                     <FiDownload className="" />
                   </div>

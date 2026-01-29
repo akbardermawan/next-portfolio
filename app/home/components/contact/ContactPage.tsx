@@ -9,7 +9,8 @@ import { FaWhatsapp, FaGithub, FaLinkedin, FaYoutube } from "react-icons/fa";
 import { EarthCanvas } from "../../canvas";
 
 //bacground
-import ContactBackground from "./ContactBackground";
+import ContactBackground from "./components/ContactBackground";
+import ContactButton from "./components/ContactButton";
 
 // import ContactButton from "../components/ContactButton";
 
@@ -212,7 +213,7 @@ const ContactPage = () => {
               />
             </label>
 
-            {/* <ContactButton
+            <ContactButton
               as="button"
               type="submit"
               color="#3b82f6" // warna biru
@@ -221,7 +222,7 @@ const ContactPage = () => {
               className="rounded-xl px-8 py-3 font-bold text-white hover:bg-sky-700 hover:text-black transition duration-300 self-center"
             >
               {loading ? "Sending..." : "Send"}
-            </ContactButton> */}
+            </ContactButton>
           </form>
         </div>
       </div>

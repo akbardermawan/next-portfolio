@@ -1,5 +1,6 @@
 import { indexApi } from "../../../../common/store/indexApi";
 import { PROJECT_URL } from "../../../../common/store/constApiRoute";
+import { ProjectResponse } from "@/common/types/projectType";
 
 export const projectAdminApiSlice = indexApi.injectEndpoints({
   endpoints: (builder) => ({
@@ -13,7 +14,24 @@ export const projectAdminApiSlice = indexApi.injectEndpoints({
         },
       }),
     }),
+    getAllProjectAdm: builder.query<ProjectResponse, void>({
+      query: () => ({
+        url: `${PROJECT_URL}/allproject`,
+      }),
+      providesTags: ["Project"],
+    }),
+    deleteProject: builder.mutation({
+      query: (id) => ({
+        url: `${PROJECT_URL}/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: [{ type: "Project", id: "LIST" }],
+    }),
   }),
 });
 
-export const { useCreateProjectMutation } = projectAdminApiSlice;
+export const {
+  useCreateProjectMutation,
+  useGetAllProjectAdmQuery,
+  useDeleteProjectMutation,
+} = projectAdminApiSlice;
