@@ -1,16 +1,16 @@
 import { indexApi } from "../../../common/store/indexApi";
-import { PROJECT_URL } from "../../../common/store/constApiRoute";
+import { HOME_URL } from "../../../common/store/constApiRoute";
 import { ProjectResponse } from "@/common/types/projectType";
 
 export const projectApiSlice = indexApi.injectEndpoints({
   endpoints: (builder) => ({
-    getAllProject: builder.query<ProjectResponse, void>({
+    getAllProjectHome: builder.query<ProjectResponse, void>({
       query: () => ({
-        url: `${PROJECT_URL}/allproject`,
+        url: `${HOME_URL}/allproject`,
       }),
       providesTags: ["Project"],
     }),
   }),
 });
 
-export const { useGetAllProjectQuery } = projectApiSlice;
+export const { useGetAllProjectHomeQuery } = projectApiSlice;

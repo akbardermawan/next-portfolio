@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { useGetAllProjectQuery } from "../../slice/projectApiSlice";
+import { useGetAllProjectHomeQuery } from "../../slice/projectApiSlice";
 import CardProject from "./components/CardProject";
 
 const ProjectPage = () => {
@@ -9,7 +9,7 @@ const ProjectPage = () => {
     isLoading: isLoadProject,
     isError,
     error: errProject,
-  } = useGetAllProjectQuery();
+  } = useGetAllProjectHomeQuery();
 
   if (isLoadProject)
     return <p className="text-white text-2xl text-center mt-10">Loading...</p>;

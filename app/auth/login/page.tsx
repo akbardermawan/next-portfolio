@@ -17,6 +17,7 @@ export default function page() {
         password,
       }).unwrap();
       console.log("Login success:", result);
+      router.push("/admin");
     } catch (error) {
       console.error("Login failed:", error);
     }

@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import ImageUpload from "./components/ImageUpload";
 import { useCreateProjectMutation } from "../slice/projectAdminApiSlice";
+import { toast } from "react-toastify";
 
 const page = () => {
   const [name, setName] = useState<string>("");
@@ -33,6 +34,7 @@ const page = () => {
 
       const data = await createProject(projectData).unwrap();
       console.log("SUCCESS:", data);
+      toast.success(`${data.name} berhasil dibuat!`);
     } catch (error: any) {
       console.error("SUBMIT ERROR:", error?.data || error);
     }
@@ -47,12 +49,6 @@ const page = () => {
             <h2 className="h-12 text-xl md:text-2xl md:pt-1 font-bold text-center">
               Create Product
             </h2>
-
-            {imageUrl && (
-              <div className="w-40 h-40 mb-4 flex justify-center">
-                <img src={imageUrl} alt="Preview" style={{ width: "10rem" }} />
-              </div>
-            )}
 
             <ImageUpload
               value={imageUrl ? [imageUrl] : []}

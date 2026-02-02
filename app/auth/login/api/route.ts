@@ -25,13 +25,34 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: error.message }, { status: 401 });
     }
 
-    return NextResponse.json(
-      {
-        user: data.user,
-        session: data.session,
-      },
-      { status: 200 },
-    );
+    //mengambil data sesion dari login
+    const session = data.session;
+
+    if (!session) {
+      return NextResponse.json(
+        { message: "No session returned" },
+        { status: 401 },
+      );
+    }
+    const response = NextResponse.json({ user: data.user }, { status: 200 });
+
+    // SESSION COOKIE → hilang saat browser ditutup
+    response.cookies.set("sb-access-token", session.access_token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "lax",
+      path: "/",
+    });
+
+    // OPTIONAL: kalau mau refresh token juga ikut hilang
+    response.cookies.set("sb-refresh-token", session.refresh_token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "lax",
+      path: "/",
+    });
+    //mengirimkan cookie ke frontend
+    return response;
   } catch (error) {
     console.error("POST register/api/ error:", error);
     return NextResponse.json(

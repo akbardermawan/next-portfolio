@@ -10,6 +10,10 @@ import type { FetchArgs, FetchBaseQueryError } from "@reduxjs/toolkit/query";
 const baseQuery: BaseQueryFn<string | FetchArgs, unknown, FetchBaseQueryError> =
   fetchBaseQuery({
     baseUrl: BASE_URL,
+
+    //untuk penggunaan cookie
+    //untuk menerima cookie dari backend dan mengirim cookie ke backend secara otmatis
+    credentials: "include",
   });
 
 export const indexApi = createApi({

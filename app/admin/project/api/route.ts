@@ -1,8 +1,32 @@
 import { NextResponse } from "next/server";
 import supabase from "../../../../common/lib/db";
 
+//pakai keamanan cookie
+import { cookies } from "next/headers";
+
 // POST: create project
 export async function POST(req: Request) {
+  //cek cookie
+  const cookieStore = await cookies();
+  const token = cookieStore.get("sb-access-token")?.value;
+
+  if (!token) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
+  // 2️⃣ VERIFIKASI TOKEN KE SUPABASE 🔥
+  const {
+    data: { user },
+    error,
+  } = await supabase.auth.getUser(token);
+
+  if (error || !user) {
+    return NextResponse.json(
+      { error: "Invalid or expired token" },
+      { status: 401 },
+    );
+  }
+
   try {
     // Mengambil data JSON dari body request
     const body = await req.json();
@@ -46,5 +70,3 @@ export async function POST(req: Request) {
     );
   }
 }
-
-
