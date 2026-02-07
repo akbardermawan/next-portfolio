@@ -38,29 +38,31 @@ export default function RootLayout({
       </head>
       <body className={`${poppins.variable} font-sans antialiased`}>
         <Provider store={store}>
-          <div className="w-full fixed top-0 left-0 z-50 ">
-            <ToastContainer />
-            <PillNav
-              logo={logo}
-              logoAlt="Company Logo"
-              items={[
-                { label: "Home", href: "/" },
-                { label: "Project", href: "/#projects" },
-                { label: "Contact", href: "/#contact" },
-                { label: "Login", href: "/auth/login" },
-              ]}
-              className="custom-nav"
-              ease="power2.easeOut"
-              baseColor="#000000"
-              pillColor="#ffffff"
-              hoveredPillTextColor="#ffffff"
-              pillTextColor="#000000"
-              theme="light"
-              initialLoadAnimation={false}
-            />
-          </div>
+          <div className="w-full overflow-hidden">
+            <div className="w-full fixed top-0 left-0 z-50 ">
+              <ToastContainer />
+              <PillNav
+                logo={logo}
+                logoAlt="Company Logo"
+                items={[
+                  { label: "Home", href: "/" },
+                  { label: "Project", href: "/#projects" },
+                  { label: "Contact", href: "/#contact" },
+                  { label: "Login", href: "/auth/login" },
+                ]}
+                className="custom-nav"
+                ease="power2.easeOut"
+                baseColor="#000000"
+                pillColor="#ffffff"
+                hoveredPillTextColor="#ffffff"
+                pillTextColor="#000000"
+                theme="light"
+                initialLoadAnimation={false}
+              />
+            </div>
 
-          {children}
+            {children}
+          </div>
         </Provider>
       </body>
     </html>
