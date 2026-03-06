@@ -4,7 +4,15 @@ import { motion } from "framer-motion";
 const BackgroundIntro = () => {
   return (
     <div className="relative w-full h-screen   flex items-center justify-center overflow-hidden">
-      {/* Teks utama */}
+      {/* Background Image */}
+      <div className="absolute inset-0 w-full h-full z-0">
+        <img
+          src="./img/vixs.png"
+          alt="img"
+          className="h-full w-full object-cover"
+        />
+      </div>
+
       {/* PC */}
       <motion.h1
         initial={{ opacity: 0, y: 40, scale: 0.95 }}
